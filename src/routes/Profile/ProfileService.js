@@ -1,8 +1,4 @@
-import { gql, graphql } from 'react-apollo';
-
-const showPayload = ({ data }) => {
-  console.log(data);
-}
+import { gql } from 'react-apollo';
 
 export const createUser =
   gql`mutation (
@@ -18,11 +14,3 @@ export const createUser =
           birthDate: $birthDate
         ) { firstName lastName gender id birthDate }
       }`
-
-
-// export
-// const userData = (
-//   gql`update {
-//     User(id: "cj7dads0w90wx0158t9ix6p9i") { name gender id birthDate }
-//   }`
-// )

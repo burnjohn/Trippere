@@ -2664,6 +2664,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://npm.yola.net/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+font-awesome@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+
 for-each@~0.3.2:
   version "0.3.2"
   resolved "https://npm.yola.net/for-each/-/for-each-0.3.2.tgz#2c40450b9348e97f281322593ba96704b9abd4d4"
@@ -5421,6 +5425,17 @@ react-event-listener@^0.4.5:
     fbjs "^0.8.4"
     prop-types "^15.5.4"
     warning "^3.0.0"
+
+react-flip-move@^2.9.14:
+  version "2.9.15"
+  resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-2.9.15.tgz#c33c817d394917c6537aba282732350bba384961"
+
+react-images-upload@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-images-upload/-/react-images-upload-1.1.1.tgz#fd7ace49df43b414326cfc0ff7535665226a71f5"
+  dependencies:
+    react "^15.6.1"
+    react-flip-move "^2.9.14"
 
 react-scripts@1.0.13:
   version "1.0.13"

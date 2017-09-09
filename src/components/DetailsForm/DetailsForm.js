@@ -11,7 +11,6 @@ const gender = [
 
 const DetailsForm = ({ onUpdate, birthDateVal, genderVal, errorFields }) => {
   const handleDateChange = (e, value) => {
-
     onUpdate('birthDate', value )
   }
   const handleSelectChange = (e, index, value) => {

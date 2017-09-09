@@ -1,0 +1,68 @@
+.photo {
+  width: 33%;
+  margin-right: 25px;
+}
+
+.photo:last-child {
+  margin-right: 0;
+}
+
+.photo .fileContainer {
+  background-color: #ebebeb;
+  height: 272px;
+  width: 178px;
+  padding: 0;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.photo .uploadIcon,
+.photo p {
+  display: none;
+}
+
+.photo .fileContainer .chooseFileButton {
+  position: relative;
+  color: transparent;
+  background: none;
+  margin: 0;
+}
+
+.photo .fileContainer .chooseFileButton:hover {
+  color: transparent;
+  background: none;
+}
+.photo .fileContainer .uploadPicturesWrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.photo .chooseFileButton:after {
+  opacity: 1;
+  font-family: 'FontAwesome';
+  content: '\f055';
+  color: #000;
+  position: absolute;
+  font-size: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.photo .fileContainer .uploadPictureContainer {
+  margin: auto;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  width: 100%;
+  height: 100%;
+}
+
+.photo .fileContainer .uploadPictureContainer img.uploadPicture {
+  width: 100%;
+}

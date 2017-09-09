@@ -1,0 +1,24 @@
+.app__wrapper {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #656565;
+  margin-bottom: 40px;
+}
+.app__title {
+  margin: 25px 0;
+  font-size: 2.5rem;
+  color: #656565;
+  font-weight: 400;
+}
+
+
+.app__button {
+  margin-top: 45px;
+}

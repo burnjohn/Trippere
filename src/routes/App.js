@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import {
   ApolloClient, createNetworkInterface, ApolloProvider
 } from 'react-apollo';
-import Profile from './Profile/ProfileContainer';
+
+import Profile from './Profile/ProfileContainer'
+import AddPhoto from './AddPhoto/AddPhoto'
 
 class App extends PureComponent {
   createClient() {
@@ -17,7 +19,7 @@ class App extends PureComponent {
 
     return (
       <ApolloProvider client={this.createClient()}>
-        <Profile />
+        <AddPhoto />
       </ApolloProvider>
     );
   }
