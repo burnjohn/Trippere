@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NameForm from '../../components/NameForm'
 import DetailsForm from '../../components/DetailsForm'
+import Snackbar from 'material-ui/Snackbar'
 import './Profile.css'
 import { omit } from 'lodash'
 
@@ -28,12 +29,13 @@ class Profile extends PureComponent {
       lastName: null,
       gender: null,
       birthDate: null,
-      errorForms: []
+      errorForms: [],
+      message: null
     }
   }
 
-  componentWillUpdate() {
-
+  componentWillReceiveProps({ message }) {
+    message && this.setState({ message })
   }
 
   updateField = (name, value) => {
@@ -41,27 +43,39 @@ class Profile extends PureComponent {
   }
 
   handleSubmitClick = () => {
-    const newUser = { ...omit(this.state, ['errorForms']) }
+    const newUser = { ...omit(this.state, ['errorForms', 'message' ]) }
     const emptyForms = getEmptyForms(newUser);
 
     this.setState({ errorForms: emptyForms })
 
     if (emptyForms.length) return
-    
+
     this.props.onSubmitClick(newUser)
   }
 
+  hideSnackBarMessage = () => {
+    this.setState(
+      { message: '' },
+      this.props.clearMessage
+    )
+  }
+
   render() {
-    const { onSubmitClick } = this.props
     const {
       firstName, lastName, birthDate,
-      gender, errorForms
+      gender, errorForms, message
     } = this.state
 
     return (
       <MuiThemeProvider>
         <div className="app__wrapper">
-
+            { this.state.message && <Snackbar
+                open={ !!message }
+                message={ message }
+                autoHideDuration={4000}
+                onRequestClose={ this.hideSnackBarMessage }
+              />
+            }
             <div className="app__header">
               <h2 className="app__title">My details</h2>
             </div>

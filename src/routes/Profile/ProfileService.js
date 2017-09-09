@@ -5,13 +5,20 @@ const showPayload = ({ data }) => {
 }
 
 export const createUser =
-  gql`mutation 
+  gql`mutation (
+        $firstName: String! 
+        $lastName: String! 
+        $gender: String! 
+        $birthDate: DateTime! 
+      ) {
         createUser(
-        $firstName: String!
-        $lastName: String!
-        $gender: String!
-        $birthDate: Date!
-      ) { name gender id birthDate }`
+          firstName: $firstName
+          lastName: $lastName
+          gender: $gender
+          birthDate: $birthDate
+        ) { firstName lastName gender id birthDate }
+      }`
+
 
 // export
 // const userData = (

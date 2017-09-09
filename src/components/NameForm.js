@@ -17,7 +17,7 @@ const NameForm = ({ nameFields = [], onUpdate, nameValues, errorFields }) => {
               key={ placeholder }
               className={ errorFields.includes(name) ? 'empty-field' : '' }
               type='text'
-              defaultValue={ placeholder }
+              hintText={ placeholder }
               value={ nameValues[name] || '' }
               name={ name }
               onChange={ handleChange.bind(this, name) }

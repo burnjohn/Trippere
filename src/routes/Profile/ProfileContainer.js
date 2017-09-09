@@ -2,26 +2,55 @@ import React, { PureComponent } from 'react'
 import Profile from './Profile'
 import { createUser }  from './ProfileService'
 import { graphql } from 'react-apollo';
-import { get } from 'lodash'
 
+const MESSAGES = {
+  success: 'User is saved successfully with id: ',
+  fail: 'Some error has occured'
+}
+
+const getFormatedDate = value => new Date(value).toISOString()
 
 
 class ProfileContainer extends PureComponent {
-  onSubmitClick = (e, { firstName, lastName, gender, birthDate }) => {
-    console.log('this.props.mutate', this.props.mutate);
-    console.log('data!!!: ', firstName, lastName, gender, birthDate);
+  constructor() {
+    super()
+
+    this.state = {
+      message: null
+    }
+  }
+
+  clearMessage = () => {
+    this.setState({ message: '' })
+  }
+
+  onSubmitClick = ({ firstName, lastName, gender, birthDate }) => {
+    this.props.mutate({
+      variables: {
+        firstName,
+        lastName,
+        gender,
+        birthDate: getFormatedDate(birthDate)
+      }
+    })
+    .then(({ data }) => {
+      const { createUser: { id } } = data;
+
+      this.setState({ message: MESSAGES.success + id })
+    }).catch((error) => {
+      this.setState({ message: MESSAGES.fail })
+    });
   }
 
   render() {
-    const User = get(this.props, 'data.User', null);
-
-    console.log('User', User);
+    const { message } = this.state
 
     return(
       <div>
         <Profile
-          user={ User }
           onSubmitClick={ this.onSubmitClick }
+          clearMessage={ this.clearMessage }
+          message={ message }
         />
       </div>
     )
