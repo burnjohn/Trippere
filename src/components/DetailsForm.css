@@ -1,0 +1,9 @@
+.details-form {
+    display: flex;
+    flex-flow: nowrap column;
+}
+.df__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

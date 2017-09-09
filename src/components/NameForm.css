@@ -1,0 +1,5 @@
+.name__container {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+}
