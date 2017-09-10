@@ -7,7 +7,6 @@ const MESSAGES = {
   fail: 'Some error has occured'
 }
 
-
 class AddPhotoContainer extends PureComponent {
   constructor(){
     super()
@@ -37,7 +36,6 @@ class AddPhotoContainer extends PureComponent {
   }
 
   render() {
-
     return(
       <AddPhoto
         onSubmitClick={ this.onSubmitClick }

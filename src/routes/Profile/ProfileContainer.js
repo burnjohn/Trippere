@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import Profile from './Profile'
 import { createUser }  from './ProfileService'
-import { graphql } from 'react-apollo';
+import { graphql } from 'react-apollo'
+
 
 const MESSAGES = {
   success: 'User is saved successfully with id: ',
@@ -34,27 +35,24 @@ class ProfileContainer extends PureComponent {
       }
     })
     .then(({ data }) => {
-      const { createUser: { id } } = data;
-
+      const { createUser: { id } } = data
       this.setState({ message: MESSAGES.success + id })
     }).catch((error) => {
       this.setState({ message: MESSAGES.fail })
-    });
+    })
   }
 
   render() {
     const { message } = this.state
 
     return(
-      <div>
         <Profile
           onSubmitClick={ this.onSubmitClick }
           clearMessage={ this.clearMessage }
           message={ message }
         />
-      </div>
     )
   }
 }
 
-export default graphql(createUser)(ProfileContainer);
+export default graphql(createUser)(ProfileContainer)

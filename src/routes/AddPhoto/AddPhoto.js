@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import ImageUploader from '../../components/ImageUploader/ImageUploader'
 import './AddPhoto.css'
 import { omit, get } from 'lodash'
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout/Layout'
 
 const PHOTO_FIELDS = {
     photo1: { file: '', image: '' },
@@ -32,7 +32,7 @@ class AddPhoto extends PureComponent {
 
   handleSubmitClick = () => {
     const photos = { ...omit(this.state, ['errorPhotos', 'message' ]) }
-    const emptyPhotos = getEmptyPhotos(photos);
+    const emptyPhotos = getEmptyPhotos(photos)
 
     this.setState({ errorPhotos: emptyPhotos })
 
@@ -53,7 +53,7 @@ class AddPhoto extends PureComponent {
   }
 
   handleImageChange = (e, name) => {
-    e.preventDefault();
+    e.preventDefault()
     const reader = new FileReader()
     const file = e.target.files[0]
 
@@ -103,8 +103,8 @@ class AddPhoto extends PureComponent {
           }
         </div>
       </Layout>
-    );
+    )
   }
 }
 
-export default AddPhoto;
+export default AddPhoto

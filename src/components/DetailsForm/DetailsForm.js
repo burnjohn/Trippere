@@ -7,7 +7,7 @@ import DatePicker from 'material-ui/DatePicker'
 const gender = [
   { label: 'male',  value: 'male'},
   { label: 'female', value: 'female' }
-];
+]
 
 const DetailsForm = ({ onUpdate, birthDateVal, genderVal, errorFields }) => {
   const handleDateChange = (e, value) => {

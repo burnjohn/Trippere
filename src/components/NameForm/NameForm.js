@@ -4,8 +4,8 @@ import './NameForm.css'
 
 const NameForm = ({ nameFields = [], onUpdate, nameValues, errorFields }) => {
   const handleChange = (name, e, value) => {
-    onUpdate(name, value);
-  };
+    onUpdate(name, value)
+  }
 
   return (
     <div>

@@ -1,28 +1,19 @@
-import React, { PureComponent } from 'react';
-import {
-  ApolloClient, createNetworkInterface, ApolloProvider
-} from 'react-apollo';
-import { API_ROOT } from '../config'
+import React, { PureComponent } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Profile from './Profile/ProfileContainer'
 import AddPhoto from './AddPhoto/AddPhotoContainer'
 
 class App extends PureComponent {
-  createClient() {
-    return new ApolloClient({
-      networkInterface: createNetworkInterface({
-        uri: `https://api.graph.cool/simple/v1/${ API_ROOT }`
-      }),
-    });
-  }
-
   render() {
-
     return (
-      <ApolloProvider client={this.createClient()}>
-        <AddPhoto />
-      </ApolloProvider>
-    );
+      <Router>
+        <div>
+          <Route exact path="/" component={ Profile }/>
+          <Route path="/add-photos" component={ AddPhoto }/>
+        </div>
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App

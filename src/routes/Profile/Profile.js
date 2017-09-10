@@ -3,17 +3,12 @@ import NameForm from '../../components/NameForm/NameForm'
 import DetailsForm from '../../components/DetailsForm/DetailsForm'
 import './Profile.css'
 import { omit } from 'lodash'
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout/Layout'
+import { withRouter } from 'react-router-dom'
 
 const NAME_FIELDS = [
-  {
-    name: 'firstName',
-    placeholder: 'John',
-  },
-  {
-    name: 'lastName',
-    placeholder: 'Doe',
-  },
+  { name: 'firstName', placeholder: 'John' },
+  { name: 'lastName', placeholder: 'Doe' },
 ]
 
 const getEmptyForms = forms => Object.keys(forms).filter(key => !forms[key])
@@ -42,7 +37,7 @@ class Profile extends PureComponent {
 
   handleSubmitClick = () => {
     const newUser = { ...omit(this.state, ['errorForms', 'message' ]) }
-    const emptyForms = getEmptyForms(newUser);
+    const emptyForms = getEmptyForms(newUser)
 
     this.setState({ errorForms: emptyForms })
 
@@ -52,7 +47,12 @@ class Profile extends PureComponent {
   }
 
   hideSnackBarMessage = () => {
-    this.setState({ message: '' })
+    this.setState(
+      { message: '' },
+      () => {
+        this.props.history.push("/add-photos")
+      }
+    )
   }
 
   render() {
@@ -81,8 +81,8 @@ class Profile extends PureComponent {
           errorFields={ errorForms }
         />
       </Layout>
-    );
+    )
   }
 }
 
-export default Profile;
+export default withRouter(Profile)

@@ -19,7 +19,7 @@ const Layout = ({
           <Snackbar
             open={ !!message }
             message={ message }
-            autoHideDuration={4000}
+            autoHideDuration={2000}
             onRequestClose={ hideSnackBarMessage }
           />
         )
