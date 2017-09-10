@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import PhotoItem from '../../components/PhotoItem/PhotoItem'
+import ImageUploader from '../../components/ImageUploader/ImageUploader'
 import './AddPhoto.css'
 import { omit } from 'lodash'
 import Layout from '../../components/Layout/Layout';
@@ -71,16 +71,20 @@ class AddPhoto extends PureComponent {
         headerText={'Add photos'}
         hideSnackBarMessage={ this.hideSnackBarMessage }
         onSubmitClick={ this.handleSubmitClick }
+        buttonClass="photo__next-btn"
       >
-        <div>
+        <div className="photo__text">
           <h3>Add your quality photos</h3>
           <p>Photos increase the chance to be picked by 80%!</p>
         </div>
         <div className="image__gallery">
           { [1,2,3].map(({ item }) => (
-              <PhotoItem
-                onImageDrop={ this.onImageDrop }
-              />
+              <div className="image__item">
+                <ImageUploader
+                  key={ Math.random() }
+                  onImageDrop={ this.onImageDrop }
+                />
+              </div>
             ))
           }
         </div>

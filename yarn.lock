@@ -5426,17 +5426,6 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react-flip-move@^2.9.14:
-  version "2.9.15"
-  resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-2.9.15.tgz#c33c817d394917c6537aba282732350bba384961"
-
-react-images-upload@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-images-upload/-/react-images-upload-1.1.1.tgz#fd7ace49df43b414326cfc0ff7535665226a71f5"
-  dependencies:
-    react "^15.6.1"
-    react-flip-move "^2.9.14"
-
 react-scripts@1.0.13:
   version "1.0.13"
   resolved "https://npm.yola.net/react-scripts/-/react-scripts-1.0.13.tgz#a51d775a4b195ab2653c562b735735c8f70cba0e"

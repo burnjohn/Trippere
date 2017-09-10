@@ -6,7 +6,7 @@ import './Layout.css'
 
 const Layout = ({
   message, headerText, hideSnackBarMessage,
-  onSubmitClick, children
+  onSubmitClick, children, buttonClass
 }) => (
   <MuiThemeProvider>
     <div className="app__wrapper">
@@ -25,7 +25,7 @@ const Layout = ({
         { children }
 
       </div>
-      <div className="app__button">
+      <div className={`app__button ${ buttonClass }`}>
         <RaisedButton
           label="next"
           secondary={true}

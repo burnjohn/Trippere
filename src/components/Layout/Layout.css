@@ -22,3 +22,6 @@
 .app__button {
   margin-top: 45px;
 }
+.app__container {
+  min-height: 420px;
+}

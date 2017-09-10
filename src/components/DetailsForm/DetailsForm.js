@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import './DetailsForm.css'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
