@@ -1,28 +1,26 @@
 import React, { PureComponent } from 'react'
 import ImageUploader from '../../components/ImageUploader/ImageUploader'
 import './AddPhoto.css'
-import { omit } from 'lodash'
+import { omit, get } from 'lodash'
 import Layout from '../../components/Layout/Layout';
 
-const PHOTO_FIELDS = [
-  {
-    name: 'photo-1',
-    src: null
-  },
-  {
-    name: 'photo-2',
-    src: null
-  },
-]
-
-const getEmptyForms = forms => Object.keys(forms).filter(key => !forms[key])
+const PHOTO_FIELDS = {
+    photo1: { file: '', image: '' },
+    photo2: { file: '', image: '' },
+    photo3: { file: '', image: '' }
+}
+const getEmptyPhotos = photos => {
+  return Object.keys(photos).filter(
+    key => !get(photos, `${key}.image`)
+  )
+}
 
 class AddPhoto extends PureComponent {
   constructor() {
     super()
 
     this.state = {
-      photos: PHOTO_FIELDS,
+      ...PHOTO_FIELDS,
       errorPhotos: [],
       message: null
     }
@@ -32,19 +30,15 @@ class AddPhoto extends PureComponent {
     message && this.setState({ message })
   }
 
-  updateField = (name, value) => {
-    this.setState({ [name]: value })
-  }
-
   handleSubmitClick = () => {
-    const newUser = { ...omit(this.state, ['errorForms', 'message' ]) }
-    const emptyForms = getEmptyForms(newUser);
+    const photos = { ...omit(this.state, ['errorPhotos', 'message' ]) }
+    const emptyPhotos = getEmptyPhotos(photos);
 
-    this.setState({ errorForms: emptyForms })
+    this.setState({ errorPhotos: emptyPhotos })
 
-    if (emptyForms.length) return
+    if (emptyPhotos.length) return
 
-    this.props.onSubmitClick(newUser)
+    this.props.onSubmitClick(photos)
   }
 
   hideSnackBarMessage = () => {
@@ -54,16 +48,32 @@ class AddPhoto extends PureComponent {
     )
   }
 
-  onImageDrop = (picture) => {
-    this.setState({
-      pictures: this.state.photos.concat(picture),
-    });
+  deleteImage = (e, name) => {
+    this.setState({ [name]: { file: null, image: null } })
+  }
+
+  handleImageChange = (e, name) => {
+    e.preventDefault();
+    const reader = new FileReader()
+    const file = e.target.files[0]
+
+    console.log('file', file)
+
+    const handleImageLoad = () => {
+      this.setState({
+        [name]: { file, image: reader.result }
+      }, () => {
+        reader.removeEventListener('loadend', handleImageLoad)
+      })
+    }
+
+    reader.addEventListener('loadend', handleImageLoad)
+    reader.readAsDataURL(file)
   }
 
   render() {
-    const {
-      message
-    } = this.state
+    const { message } = this.state
+    const photos = omit(this.state, ['message', 'errorPhotos'])
 
     return (
       <Layout
@@ -78,14 +88,18 @@ class AddPhoto extends PureComponent {
           <p>Photos increase the chance to be picked by 80%!</p>
         </div>
         <div className="image__gallery">
-          { [1,2,3].map(({ item }) => (
-              <div className="image__item">
-                <ImageUploader
-                  key={ Math.random() }
-                  onImageDrop={ this.onImageDrop }
-                />
-              </div>
-            ))
+          { Object.keys(photos).map((key) => {
+            const { image } = this.state[key]
+
+            return (<div className="image__item" key={key}>
+              <ImageUploader
+                imgName={key}
+                image={ image }
+                handleImageChange={(e) => this.handleImageChange(e, key)}
+                deleteImage={(e) => this.deleteImage(e, key)}
+              />
+            </div>)
+            })
           }
         </div>
       </Layout>

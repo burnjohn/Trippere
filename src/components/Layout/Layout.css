@@ -25,3 +25,6 @@
 .app__container {
   min-height: 420px;
 }
+.snackbar {
+  height: auto;
+}

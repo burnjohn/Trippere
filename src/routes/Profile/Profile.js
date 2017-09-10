@@ -52,10 +52,7 @@ class Profile extends PureComponent {
   }
 
   hideSnackBarMessage = () => {
-    this.setState(
-      { message: '' },
-      this.props.clearMessage
-    )
+    this.setState({ message: '' })
   }
 
   render() {
