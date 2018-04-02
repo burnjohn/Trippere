@@ -99,7 +99,7 @@ class AddPhoto extends PureComponent {
                 deleteImage={(e) => this.deleteImage(e, key)}
               />
             </div>)
-            })
+          })
           }
         </div>
       </Layout>

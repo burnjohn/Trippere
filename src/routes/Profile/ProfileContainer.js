@@ -26,13 +26,10 @@ class ProfileContainer extends PureComponent {
   }
 
   onSubmitClick = ({ firstName, lastName, gender, birthDate }) => {
+    var a = null;
+
     this.props.mutate({
-      variables: {
-        firstName,
-        lastName,
-        gender,
-        birthDate: getFormatedDate(birthDate)
-      }
+      new: 'name'
     })
     .then(({ data }) => {
       const { createUser: { id } } = data
